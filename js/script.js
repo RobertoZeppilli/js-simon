@@ -72,7 +72,7 @@ setTimeout(function () {
         console.log("Hai indovinato", punteggio, "numeri/o" + "\nI numeri che hai ricordato sono", numeriIndovinati);
     }
 
-}, 3000);
+}, 30000);
 
 
 
