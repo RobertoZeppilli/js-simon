@@ -43,16 +43,21 @@ while (numeriRandom.length < 5) {
 // 2. creo un alert per mostrare in pagina 5 numeri random (generati in precedenza).
 alert("Ricorda bene questi 5 numeri, avrai 30 secondi per riscriverli:\n" + numeriRandom);
 
-// 3. faccio partire un timer di 30 secondi (30.000 millisecondi), terminato il quale partirà il ciclo for: 
-//    3.1 chiedo 5 volte un numero all'utente tramite prompt.
-//    3.2 se quel numero è presente nell'array numeriRandom, lo inserisco nell'array numeriIndovinati ed incremento il punteggio.
-//    3.3 in caso contrario dico all'utente che il numero inserito è sbagliato.
+//    3. faccio partire un timer di 30 secondi (30.000 millisecondi), terminato il quale partirà il ciclo for: 
+//    3.1 chiedo 5 volte un numero (compreso tra 1 e 100, non stringa) all'utente tramite prompt.
+//    3.2 se il numero è presente nell'array numeriIndovinati, un alert dirà all'utente che il numero è stato già inserito ed avrà perso un tentativo.
+//    3.3 se quel numero è presente nell'array numeriRandom, lo inserisco nell'array numeriIndovinati ed incremento il punteggio.
+//    3.4 in caso contrario dico all'utente che il numero inserito è sbagliato.
 setTimeout(function () {
     for (var t = 0; t < 5; t++) {
 
-        var numeriUtente = parseInt(prompt("Inserisci i numeri che sono apparsi in precedenza!"));
+        do {
+            var numeriUtente = parseInt(prompt("Inserisci i numeri che sono apparsi in precedenza!"));
+        } while (isNaN(numeriUtente) || numeriUtente < 1 || numeriUtente > 100);
 
-        if (isInArray(numeriUtente, numeriRandom)) {
+        if (isInArray(numeriUtente, numeriIndovinati)) {
+            alert("Il numero che hai scelto è stato già inserito, hai perso un tentativo!");
+        } else if (isInArray(numeriUtente, numeriRandom)) {
             numeriIndovinati.push(numeriUtente);
             punteggio++;
             console.log("Hai indovinato il numero:", numeriUtente);
@@ -67,8 +72,10 @@ setTimeout(function () {
         console.log("Hai indovinato", punteggio, "numeri/o" + "\nI numeri che hai ricordato sono", numeriIndovinati);
     }
 
-}, 30000);
+}, 3000);
 
 
 
 
+// (isInArray(numeriUtente, numeriIndovinati)) {
+//     alert("Il numero che hai scelto è stato già inserito, riprova!")
