@@ -50,7 +50,6 @@ alert("Ricorda bene questi 5 numeri, avrai 30 secondi per riscriverli:\n" + nume
 //    3.4 in caso contrario dico all'utente che il numero inserito è sbagliato.
 setTimeout(function () {
     for (var t = 0; t < 5; t++) {
-
         do {
             var numeriUtente = parseInt(prompt("Inserisci i numeri che sono apparsi in precedenza!"));
         } while (isNaN(numeriUtente) || numeriUtente < 1 || numeriUtente > 100);
@@ -67,9 +66,9 @@ setTimeout(function () {
     }
     // 4. al di fuori del ciclo for, se la lunghezza dell'array numeriIndovinati è pari a 0 (cioè non ho indovinato nessun numero), manderò un messaggio appropriato all'utente. In caso contrario comunicherò all'utente il punteggio totalizzato e quali numeri ha indovinato tra quelli presenti nell'array numeriRandom.
     if (numeriIndovinati.length == 0) {
-        console.log("Non hai indovinato nessun numero!");
+        alert("Non hai indovinato nessun numero!");
     } else {
-        console.log("Hai indovinato", punteggio, "numeri/o" + "\nI numeri che hai ricordato sono", numeriIndovinati);
+        alert("Hai totalizzato " + punteggio + " punti/o!" + "\nNumeri indovinati: " + numeriIndovinati);
     }
 
 }, 30000);
