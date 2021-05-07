@@ -41,7 +41,7 @@ while (numeriRandom.length < 5) {
 }
 
 // 2. creo un alert per mostrare in pagina 5 numeri random (generati in precedenza).
-alert("Ricorda bene questi 5 numeri, avrai 30 secondi per riscriverli:\n" + numeriRandom);
+alert("Ricorda bene questi 5 numeri, tra 30 secondi dovrai indovinarne il più possibile:\n" + numeriRandom);
 
 //    3. faccio partire un timer di 30 secondi (30.000 millisecondi), terminato il quale partirà il ciclo for: 
 //    3.1 chiedo 5 volte un numero (compreso tra 1 e 100, non stringa) all'utente tramite prompt.
@@ -52,6 +52,7 @@ setTimeout(function () {
     for (var t = 0; t < 5; t++) {
         do {
             var numeriUtente = parseInt(prompt("Inserisci i numeri che sono apparsi in precedenza!"));
+
         } while (isNaN(numeriUtente) || numeriUtente < 1 || numeriUtente > 100);
 
         if (isInArray(numeriUtente, numeriIndovinati)) {
@@ -59,22 +60,18 @@ setTimeout(function () {
         } else if (isInArray(numeriUtente, numeriRandom)) {
             numeriIndovinati.push(numeriUtente);
             punteggio++;
-            console.log("Hai indovinato il numero:", numeriUtente);
-        } else {
-            console.log("Il numero", numeriUtente, "è sbagliato!");
+            // console.log("Hai indovinato il numero:", numeriUtente);
         }
     }
     // 4. al di fuori del ciclo for, se la lunghezza dell'array numeriIndovinati è pari a 0 (cioè non ho indovinato nessun numero), manderò un messaggio appropriato all'utente. In caso contrario comunicherò all'utente il punteggio totalizzato e quali numeri ha indovinato tra quelli presenti nell'array numeriRandom.
     if (numeriIndovinati.length == 0) {
-        alert("Non hai indovinato nessun numero!");
+        // alert("Non hai indovinato nessun numero!");
+        document.getElementById("punti").innerHTML = "Non hai indovinato nessun numero!";
     } else {
-        alert("Hai totalizzato " + punteggio + " punti/o!" + "\nNumeri indovinati: " + numeriIndovinati);
+        // alert("Hai totalizzato " + punteggio + " punti/o!" + "\nNumeri indovinati: " + numeriIndovinati);
+        document.getElementById("punti").innerHTML = "Hai totalizzato " + punteggio + " punti/o!";
+        document.getElementById("numeri-random").innerHTML = "I numeri casuali: " + numeriRandom;
+        document.getElementById("numeri-indovinati").innerHTML = "Numeri indovinati: " + numeriIndovinati;
     }
 
 }, 30000);
-
-
-
-
-// (isInArray(numeriUtente, numeriIndovinati)) {
-//     alert("Il numero che hai scelto è stato già inserito, riprova!")

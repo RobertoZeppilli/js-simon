@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    height: 100vh;
+    font-size: 3em;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    word-spacing: .2em;
+    background-color: hsla(251, 46%, 58%, 0.363);
+    color: hsl(241, 46%, 58%);
+}
+
+h1 {
+    font-family:'Courier New', Courier, monospace;
+}
+
+
